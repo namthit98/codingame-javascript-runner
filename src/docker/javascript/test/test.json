@@ -1,0 +1,142 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-04-06T07:11:58.911Z",
+    "end": "2020-04-06T07:11:58.928Z",
+    "duration": 17,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "70304d61-c58c-4ba7-a6e6-142c0e0c4c9d",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d98b8c65-45c7-4278-83d7-642fba071d82",
+          "title": "Sum Function",
+          "fullFile": "/var/app/test/main.js",
+          "file": "/test/main.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return true result - 1",
+              "fullTitle": "Sum Function should return true result - 1",
+              "timedOut": false,
+              "duration": 1,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(sum(1, 2)).equals(3);",
+              "err": {},
+              "uuid": "1829fe26-4d6e-4035-bcb7-241e2ac3e6d3",
+              "parentUUID": "d98b8c65-45c7-4278-83d7-642fba071d82",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return true result - 2",
+              "fullTitle": "Sum Function should return true result - 2",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(sum(35325, 53252)).equals(88577);",
+              "err": {},
+              "uuid": "87ecb4fd-44e8-4598-83d7-a6734df46367",
+              "parentUUID": "d98b8c65-45c7-4278-83d7-642fba071d82",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return false result - 1",
+              "fullTitle": "Sum Function should return false result - 1",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(sum(432, 421)).not.equals(4321);",
+              "err": {},
+              "uuid": "7cfe548a-8d4d-4412-b287-82511614db81",
+              "parentUUID": "d98b8c65-45c7-4278-83d7-642fba071d82",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1829fe26-4d6e-4035-bcb7-241e2ac3e6d3",
+            "87ecb4fd-44e8-4598-83d7-a6734df46367",
+            "7cfe548a-8d4d-4412-b287-82511614db81"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.1.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "test",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "5.0.0"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "test",
+        "reportFilename": "test",
+        "html": "false"
+      },
+      "version": "4.1.0"
+    }
+  }
+}

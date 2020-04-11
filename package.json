@@ -1,0 +1,35 @@
+{
+  "name": "codingame-javascript-runner",
+  "version": "1.0.0",
+  "description": "Javascript Runner for Codingame",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test": "mocha test/5v3u50xk4bjbsxm-18112019.test.js --reporter mochawesome --reporter-options reportFilename=customReportFilename,html=false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namthit98/codingame-javascript-runner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/namthit98/codingame-javascript-runner/issues"
+  },
+  "homepage": "https://github.com/namthit98/codingame-javascript-runner#readme",
+  "dependencies": {
+    "aws-sdk": "^2.590.0",
+    "chai": "^4.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "mocha": "^6.2.2",
+    "mochawesome": "^4.1.0",
+    "uniqid": "^5.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
