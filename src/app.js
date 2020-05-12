@@ -62,10 +62,12 @@ const runCode = (filename, language) => {
       `docker run --rm -e FILENAME=${filename} -e TESTNAME=${filename} --mount type=bind,source=$(pwd)/docker/${language}/test,target=/var/app/test test-${language}`,
       { timeout: 10000 },
       (err, stdout, stderr) => {
+        console.log("err", err)
         if (err !== null && stdout === "") {
           const output = stderr !== "" ? stderr : "Your code timed out.";
           reject(output);
         }
+        console.log("stdout", stdout)
         resolve(stdout);
       }
     );
@@ -108,7 +110,7 @@ app.post("/javascript-code/excute", async (req, res, next) => {
   });
 
   const filename = await buildTestFile(sourceCode, testCase, language);
-  console.log("filename", "filename")
+  console.log("filename", filename)
   await runCode(filename, language);
 
   console.log("runCode", filename)
