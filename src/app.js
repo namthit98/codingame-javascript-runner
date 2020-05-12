@@ -94,6 +94,8 @@ app.use(cors());
 app.post("/javascript-code/excute", async (req, res, next) => {
   const { sourceName, testCaseName, language } = req.body;
 
+  console.log({ sourceName, testCaseName, language }, "{ sourceName, testCaseName, language }")
+
   const sourceCode = await getFileFromS3(s3, {
     Bucket: "codingame",
     Key: sourceName,
