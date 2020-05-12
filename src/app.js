@@ -108,10 +108,13 @@ app.post("/javascript-code/excute", async (req, res, next) => {
   });
 
   const filename = await buildTestFile(sourceCode, testCase, language);
+  console.log("filename", "filename")
   await runCode(filename, language);
+
+  console.log("runCode", filename)
   const result = await readReport(filename, language);
 
-  console.log(result);
+  console.log("result", result);
 
   res.jsonp({
     success: true,
