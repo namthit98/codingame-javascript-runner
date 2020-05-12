@@ -59,7 +59,7 @@ const runCode = (filename, language) => {
 
   return new Promise((resolve, reject) => {
     exec(
-      `docker run --rm -e FILENAME=${filename} -e TESTNAME=${filename} --mount type=bind,source=$(pwd)/docker/${language}/test,target=/var/app/test test-${language}`,
+      `docker run --rm --cpus=".5" --memory="4m" -e FILENAME=${filename} -e TESTNAME=${filename} --mount type=bind,source=$(pwd)/docker/${language}/test,target=/var/app/test test-${language}`,
       { timeout: 10000 },
       (err, stdout, stderr) => {
         console.log("err", err)
@@ -84,6 +84,8 @@ const readReport = (filename, language) => {
       (err, data) => {
         if (err) reject(err);
 
+        if(!data) return resolve(null);
+
         resolve(data.toString());
       }
     );
@@ -95,34 +97,42 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/javascript-code/excute", async (req, res, next) => {
-  const { sourceName, testCaseName, language } = req.body;
+  try {
+    const { sourceName, testCaseName, language } = req.body;
 
-  console.log({ sourceName, testCaseName, language }, "{ sourceName, testCaseName, language }")
-
-  const sourceCode = await getFileFromS3(s3, {
-    Bucket: "codingame",
-    Key: sourceName,
-  });
-
-  const testCase = await getFileFromS3(s3, {
-    Bucket: "codingame",
-    Key: testCaseName,
-  });
-
-  const filename = await buildTestFile(sourceCode, testCase, language);
-  console.log("filename", filename)
-  await runCode(filename, language);
-
-  console.log("runCode", filename)
-  const result = await readReport(filename, language);
-
-  console.log("result", result);
-
-  res.jsonp({
-    success: true,
-    message: "Excute successfully",
-    data: result,
-  });
+    console.log({ sourceName, testCaseName, language }, "{ sourceName, testCaseName, language }")
+  
+    const sourceCode = await getFileFromS3(s3, {
+      Bucket: "codingame",
+      Key: sourceName,
+    });
+  
+    const testCase = await getFileFromS3(s3, {
+      Bucket: "codingame",
+      Key: testCaseName,
+    });
+  
+    const filename = await buildTestFile(sourceCode, testCase, language);
+    console.log("filename", filename)
+    await runCode(filename, language);
+  
+    console.log("runCode", filename)
+    const result = await readReport(filename, language);
+  
+    res.jsonp({
+      success: true,
+      message: "Excute successfully",
+      data: result,
+    });
+  } catch(err) {
+    console.log("err", err)
+    res.status(400).jsonp({
+      success: false,
+      message: "Excute failed",
+      data: err,
+    })
+  }
+  
 });
 
 app.get("/ping", (req, res, next) => {
