@@ -32,6 +32,7 @@ const buildTestFile = (sourceCode, testCase, language) => {
   const filename = `${uniqid()}-${formatDate(new Date())}.test.js`;
 
   return new Promise((resolve, reject) => {
+    console.log(path.join(__dirname, "..", "docker", language, "test", filename))
     fs.writeFile(
       path.join(__dirname, "..", "docker", language, "test", filename),
       sourceCode + "\n",
