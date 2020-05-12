@@ -59,7 +59,7 @@ const runCode = (filename, language) => {
 
   return new Promise((resolve, reject) => {
     exec(
-      `docker run --rm --cpus=".5" --memory="4m" -e FILENAME=${filename} -e TESTNAME=${filename} --mount type=bind,source=$(pwd)/docker/${language}/test,target=/var/app/test test-${language}`,
+      `docker run --rm -e FILENAME=${filename} -e TESTNAME=${filename} --mount type=bind,source=$(pwd)/docker/${language}/test,target=/var/app/test test-${language}`,
       { timeout: 10000 },
       (err, stdout, stderr) => {
         console.log("err", err)
