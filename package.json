@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/namthit98/codingame-javascript-runner#readme",
   "dependencies": {
-    "aws-sdk": "^2.590.0",
+    "aws-sdk": "^2.814.0",
     "chai": "^4.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
